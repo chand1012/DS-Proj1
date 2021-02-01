@@ -3,7 +3,7 @@
 template <class T>
 LinkedList<T>::~LinkedList()
 {
-    Node *node = NULL;
+    Node *node = nullptr;
     Node *nextNode;
 
     node = head;
@@ -58,11 +58,47 @@ void LinkedList<T>::appendNode(T data) {
 }
 
 template <class T>
-bool LinkedList<T>::deleteNode(T) {
+bool LinkedList<T>::deleteNode(T data) {
+    Node *r = head;
+    Node *b = nullptr;
+
+    if (head == nullptr) {
+        return false;
+    }
+
+    if (r->data == data) {
+        head = r->next;
+        delete r;
+        node_count--;
+        return true;
+    }
+
+    while (r->data != data) {
+        b = r;
+        r = r->next;
+        if (r == nullptr) {
+            return false;
+        }
+    } 
     
+    if (r) {
+        b->next = r->next;
+        delete r;
+        node_count--;
+    }
+    return true;
 } 
 
 template <class T>
 T LinkedList<T>::popNode() {
+    Node *r = head;
 
+    while(r->next != nullptr) {
+        r = r->next;
+    }
+
+    T data = r->data;
+
+    deleteNode(data);
+    return data;
 }
