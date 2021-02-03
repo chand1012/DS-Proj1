@@ -14,3 +14,6 @@ A value will be inserted to the beginning of the structure.
 
 ## Append 
 A value will be added to the end of the structure.
+
+## Delete
+Will delete the value and move values to accomodate for the loss.

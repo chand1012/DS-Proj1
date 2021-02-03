@@ -1,8 +1,7 @@
 #include "LinkedList.hpp"
 
 template <class T>
-LinkedList<T>::~LinkedList()
-{
+LinkedList<T>::~LinkedList() {
     Node *node = nullptr;
     Node *nextNode;
 
