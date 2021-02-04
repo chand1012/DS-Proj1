@@ -25,4 +25,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: Results
-        path: build/Results.csv
+        path: build/*.csv
