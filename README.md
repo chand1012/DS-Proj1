@@ -6,14 +6,11 @@ In this project I will be testing the speed difference on a few different platfo
 
 Three data types will be tested: `int`, `double`, and `string`. These were chosen due to them being in the C++ standard library and their increasing complexity from left to right. Integers are rather simple, doubles are more complex but
 
-## Iteration
-There will be a loop that will attept to get every value. 
-
-## Head Insert
-A value will be inserted to the beginning of the structure.
 
 ## Append 
 A value will be added to the end of the structure.
+## Iteration
+There will be a loop that will attept to get every value. 
 
-## Delete
-Will delete the value and move values to accomodate for the loss.
+## Pop
+Will delete the last value.

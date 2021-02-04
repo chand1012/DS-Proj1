@@ -65,9 +65,12 @@ T LinkedList<T>::getNode(unsigned int index) {
 
     unsigned int counter = 0;
 
-    while (workingNode -> next != nullptr && counter < index) {
+    while (workingNode -> next != nullptr) {
+        if (counter == index) {
+            return (workingNode -> data);
+        }
+        ++counter;
         workingNode = workingNode -> next;
-        counter++;
     }
     return workingNode -> data;
 }

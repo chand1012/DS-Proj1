@@ -91,5 +91,17 @@ int main() {
         assert(test.popNode() == "This is the first node now");
     }
 
+    //test get
+    {
+        LinkedList<string> test;
+        test.appendNode("This is a test");
+        test.appendNode("This is another test");
+        test.insertNode("This is the first node now");
+
+        assert(test.length() == 3);
+
+        assert(test.getNode(1) == "This is a test");
+    }
+
     return 0;
 }
