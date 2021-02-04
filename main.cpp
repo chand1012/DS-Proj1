@@ -21,10 +21,10 @@ int main() {
     ofstream datastream;
     datastream.open("Results.csv");
 
-    datastream << "testname,10,100,1000,10000,100000,1000000,10000000" << endl;
+    datastream << "testname,10,100,1000,10000,100000" << endl;
 
     unsigned int iteration;
-    unsigned int iterations[7] = {10, 100, 1000, 10000, 100000, 1000000, 10000000};
+    unsigned int iterations[5] = {10, 100, 1000, 10000, 100000};
 
     const int testint = 20000000;
     const double pi = 3.141592653589793238463;
@@ -40,7 +40,7 @@ int main() {
 
     datastream << "int_vect_push,";
     cout << "pushing int vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<int> TestStack;
@@ -53,13 +53,13 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
+    // print_n_char('-', 20);
+    // cout << endl;
 
     datastream << "int_vect_size,";
     cout << "insert int vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<int> TestStack;
@@ -72,13 +72,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "int_vect_delete,";
     cout << "Deleting int vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<int> TestStack;
@@ -94,9 +92,7 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     cout << "TEST #2: DOUBLE VECTOR STACK." << endl;
     print_n_char('-', 20);
@@ -104,7 +100,7 @@ int main() {
 
     datastream << "double_vect_push,";
     cout << "pushing double vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<double> TestStack;
@@ -117,13 +113,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "double_vect_size,";
     cout << "insert double vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<double> TestStack;
@@ -136,13 +130,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "double_vect_pop,";
     cout << "Popping double vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<double> TestStack;
@@ -158,9 +150,7 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     cout << "TEST #3: STRING VECTOR STACK." << endl;
     print_n_char('-', 20);
@@ -168,7 +158,7 @@ int main() {
 
     datastream << "string_vect_push,";
     cout << "pushing string vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<string> TestStack;
@@ -181,13 +171,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "int_stack_insert,";
     cout << "Insert int stack";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<string> TestStack;
@@ -200,13 +188,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "string_vect_pop,";
     cout << "Popping string vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<string> TestStack;
@@ -222,9 +208,7 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     cout << "TEST #4: INT STL STACK." << endl;
     print_n_char('-', 20);
@@ -232,7 +216,7 @@ int main() {
 
     datastream << "int_stack_push,";
     cout << "pushing string vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<int> TestStack;
@@ -245,13 +229,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "int_stack_insert,";
     cout << "insert string vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<int> TestStack;
@@ -264,13 +246,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "int_stack_pop,";
     cout << "Popping string vectors";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<int> TestStack;
@@ -286,9 +266,7 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     cout << "TEST #5: DOUBLE STL STACK." << endl;
     print_n_char('-', 20);
@@ -296,7 +274,7 @@ int main() {
 
     datastream << "double_stack_push,";
     cout << "pushing double stacks";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<double> TestStack;
@@ -309,13 +287,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "double_stack_insert,";
     cout << "insert double stackss";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<double> TestStack;
@@ -328,13 +304,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "double_stack_pop,";
     cout << "Popping double stacks";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<double> TestStack;
@@ -350,9 +324,7 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     cout << "TEST #6: STRING STL STACK." << endl;
     print_n_char('-', 20);
@@ -360,7 +332,7 @@ int main() {
 
     datastream << "string_stack_push,";
     cout << "pushing double stacks";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<string> TestStack;
@@ -373,13 +345,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "string_stack_insert,";
     cout << "insert string stackss";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<string> TestStack;
@@ -392,13 +362,11 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
+    cout << "Done." << endl;
 
     datastream << "string_stack_pop,";
     cout << "Popping string stacks";
-    for (unsigned int i = 0; i < 7; ++i) {
+    for (unsigned int i = 0; i < 5; ++i) {
         cout << '.';
         iteration = iterations[i];
         stack<string> TestStack;
@@ -414,10 +382,8 @@ int main() {
         datastream << duration.count() << ',';
     }
     datastream << endl;
-    cout << endl;
-    print_n_char('-', 20);
-    cout << endl;
-    
+    cout << "Done." << endl;
+
     datastream.close();
 
     return 0;
