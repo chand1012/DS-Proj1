@@ -18,3 +18,8 @@ jobs:
         cmake ..
         make -j$(nproc)
         make runtest
+        make run
+    - uses: actions/upload-artifact@v2
+      with:
+      name: Results
+      path: build/Results.csv

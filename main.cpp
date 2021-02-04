@@ -1,10 +1,8 @@
 
 #include <iostream>
 #include <string>
-#include <unistd.h>
+#include <stack>
 #include <fstream>
-#include <sstream>
-#include <iomanip>
 #include <chrono> 
 #include <bits/stdc++.h>
 using namespace std::chrono; 
@@ -20,12 +18,13 @@ void print_n_char(char x, unsigned int n) {
 }
 
 int main() {
-    stringstream datastream;
+    ofstream datastream;
+    datastream.open("Results.csv");
 
-    datastream << "testname,10,100,1000,10000,100000,1000000,10000000,100000000" << endl;
+    datastream << "testname,10,100,1000,10000,100000,1000000,10000000" << endl;
 
     unsigned int iteration;
-    unsigned int iterations[8] = {10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
+    unsigned int iterations[7] = {10, 100, 1000, 10000, 100000, 1000000, 10000000};
 
     const int testint = 20000000;
     const double pi = 3.141592653589793238463;
@@ -39,15 +38,15 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "int_vect_append,";
-    cout << "Appending int vectors";
+    datastream << "int_vect_push,";
+    cout << "pushing int vectors";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<int> TestStack;
         auto start = high_resolution_clock::now(); 
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(testint);
+            TestStack.push(testint);
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -58,18 +57,15 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "int_vect_iterate,";
-    cout << "Size of int vectors";
+    datastream << "int_vect_size,";
+    cout << "insert int vectors";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<int> TestStack;
-        for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(testint);
-        }
         auto start = high_resolution_clock::now();
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.getItem(j);
+            TestStack.insert(testint);
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -87,11 +83,11 @@ int main() {
         iteration = iterations[i];
         VectorStack<int> TestStack;
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(testint);
+            TestStack.push(testint);
         }
         auto start = high_resolution_clock::now();
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.popItem();
+            TestStack.pop();
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -106,15 +102,15 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "double_vect_append,";
-    cout << "Appending double vectors";
+    datastream << "double_vect_push,";
+    cout << "pushing double vectors";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<double> TestStack;
         auto start = high_resolution_clock::now(); 
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(pi);
+            TestStack.push(pi);
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -125,18 +121,15 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "double_vect_iterate,";
-    cout << "Size of double vectors";
+    datastream << "double_vect_size,";
+    cout << "insert double vectors";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<double> TestStack;
-        for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(pi);
-        }
         auto start = high_resolution_clock::now();
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.getItem(j);
+            TestStack.insert(pi);
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -147,18 +140,18 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "double_vect_delete,";
-    cout << "Deleting double vectors";
+    datastream << "double_vect_pop,";
+    cout << "Popping double vectors";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<double> TestStack;
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(pi);
+            TestStack.push(pi);
         }
         auto start = high_resolution_clock::now();
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.popItem();
+            TestStack.pop();
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -173,15 +166,15 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "string_vect_append,";
-    cout << "Appending string vectors";
+    datastream << "string_vect_push,";
+    cout << "pushing string vectors";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<string> TestStack;
         auto start = high_resolution_clock::now(); 
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(teststr);
+            TestStack.push(teststr);
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -192,18 +185,15 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    datastream << "string_vect_iterate,";
-    cout << "Size of string vectors";
+    datastream << "int_stack_insert,";
+    cout << "Insert int stack";
     for (unsigned int i = 0; i < 7; ++i) {
         cout << '.';
         iteration = iterations[i];
         VectorStack<string> TestStack;
-        for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(teststr);
-        }
         auto start = high_resolution_clock::now();
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.getItem(j);
+            TestStack.insert(teststr);
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -221,11 +211,11 @@ int main() {
         iteration = iterations[i];
         VectorStack<string> TestStack;
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.appendItem(teststr);
+            TestStack.push(teststr);
         }
         auto start = high_resolution_clock::now();
         for (unsigned int j = 0; j < iteration; ++j) {
-            TestStack.popItem();
+            TestStack.pop();
         }
         auto end = high_resolution_clock::now(); 
         auto duration = duration_cast<microseconds>(end - start);
@@ -236,11 +226,199 @@ int main() {
     print_n_char('-', 20);
     cout << endl;
 
-    cout << "Outputting Results.csv...." << endl;
-    ofstream file;
-    file.open("Results.csv");
-    file << datastream.str();
-    file.close();
+    cout << "TEST #4: INT STL STACK." << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "int_stack_push,";
+    cout << "pushing string vectors";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<int> TestStack;
+        auto start = high_resolution_clock::now(); 
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.push(testint);
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "int_stack_insert,";
+    cout << "insert string vectors";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<int> TestStack;
+        auto start = high_resolution_clock::now();
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.emplace(testint);
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "int_stack_pop,";
+    cout << "Popping string vectors";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<int> TestStack;
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.push(testint);
+        }
+        auto start = high_resolution_clock::now();
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.pop();
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    cout << "TEST #5: DOUBLE STL STACK." << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "double_stack_push,";
+    cout << "pushing double stacks";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<double> TestStack;
+        auto start = high_resolution_clock::now(); 
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.push(pi);
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "double_stack_insert,";
+    cout << "insert double stackss";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<double> TestStack;
+        auto start = high_resolution_clock::now();
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.emplace(pi);
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "double_stack_pop,";
+    cout << "Popping double stacks";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<double> TestStack;
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.push(pi);
+        }
+        auto start = high_resolution_clock::now();
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.pop();
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    cout << "TEST #6: STRING STL STACK." << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "string_stack_push,";
+    cout << "pushing double stacks";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<string> TestStack;
+        auto start = high_resolution_clock::now(); 
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.push(teststr);
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "string_stack_insert,";
+    cout << "insert string stackss";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<string> TestStack;
+        auto start = high_resolution_clock::now();
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.emplace(teststr);
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+
+    datastream << "string_stack_pop,";
+    cout << "Popping string stacks";
+    for (unsigned int i = 0; i < 7; ++i) {
+        cout << '.';
+        iteration = iterations[i];
+        stack<string> TestStack;
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.push(teststr);
+        }
+        auto start = high_resolution_clock::now();
+        for (unsigned int j = 0; j < iteration; ++j) {
+            TestStack.pop();
+        }
+        auto end = high_resolution_clock::now(); 
+        auto duration = duration_cast<microseconds>(end - start);
+        datastream << duration.count() << ',';
+    }
+    datastream << endl;
+    cout << endl;
+    print_n_char('-', 20);
+    cout << endl;
+    
+    datastream.close();
 
     return 0;
 }

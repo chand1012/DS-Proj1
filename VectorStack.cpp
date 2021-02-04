@@ -1,5 +1,7 @@
 #include "VectorStack.hpp"
 
+#include <iostream>
+
 using namespace std;
 
 template <class T>
