@@ -57,6 +57,22 @@ void LinkedList<T>::appendNode(T data) {
 }
 
 template <class T>
+T LinkedList<T>::getNode(unsigned int index) {
+    
+    Node *workingNode;
+
+    workingNode = head;
+
+    unsigned int counter = 0;
+
+    while (workingNode -> next != nullptr && counter < index) {
+        workingNode = workingNode -> next;
+        counter++;
+    }
+    return workingNode -> data;
+}
+
+template <class T>
 bool LinkedList<T>::deleteNode(T data) {
     Node *r = head;
     Node *b = nullptr;
