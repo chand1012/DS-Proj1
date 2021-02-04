@@ -8,7 +8,7 @@ int main() {
     { // test constructor
 
         VectorStack<int> test;
-        assert(test.length() == 0);
+        assert(test.size() == 0);
 
     }
 
@@ -16,12 +16,12 @@ int main() {
         VectorStack<int> test;
         
         for (unsigned int i = 0; i < 5; ++i) {
-            test.appendItem(i);
+            test.push(i);
         }
 
-        assert(test.length() == 5);
-        assert(test.getItem(0) == 0);
-        assert(test.getItem(4) == 4);
+        assert(test.size() == 5);
+        assert(test.at(0) == 0);
+        assert(test.at(4) == 4);
 
     }
 
@@ -29,12 +29,12 @@ int main() {
         VectorStack<int> test;
         
         for (unsigned int i = 0; i < 5; ++i) {
-            test.insertItem(i);
+            test.insert(i);
         }
 
-        assert(test.length() == 5);
-        assert(test.getItem(0) == 4);
-        assert(test.getItem(4) == 0);
+        assert(test.size() == 5);
+        assert(test.at(0) == 4);
+        assert(test.at(4) == 0);
         
     }
 
@@ -42,15 +42,15 @@ int main() {
         VectorStack<int> test;
         
         for (unsigned int i = 0; i < 5; ++i) {
-            test.insertItem(i);
+            test.insert(i);
         }
 
-        int x = test.getItem(3);
+        int x = test.at(3);
 
-        test.deleteItem(3);
+        test.remove(3);
 
-        assert(test.length() == 4);
-        assert(test.getItem(3) != x);
+        assert(test.size() == 4);
+        assert(test.at(3) != x);
         
     }
 
@@ -58,12 +58,12 @@ int main() {
         VectorStack<int> test;
         
         for (unsigned int i = 0; i < 5; ++i) {
-            test.appendItem(i);
+            test.push(i);
         }
 
-        int x = test.popItem();
+        int x = test.pop();
 
-        assert(test.length() == 4);
+        assert(test.size() == 4);
         assert(x == 4);
 
     }

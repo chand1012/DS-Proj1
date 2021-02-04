@@ -3,24 +3,24 @@
 using namespace std;
 
 template <class T>
-unsigned int VectorStack<T>::length() {
+unsigned int VectorStack<T>::size() {
     return elements.size();
 }
 
 template <class T>
-void VectorStack<T>::appendItem(T data) {
+void VectorStack<T>::push(T data) {
     elements.push_back(data);
 }
 
 template <class T>
-void VectorStack<T>::insertItem(T data) {
+void VectorStack<T>::insert(T data) {
     typename vector<T>::iterator it;
     it = elements.begin();
     elements.insert(it, data);
 }
 
 template <class T>
-bool VectorStack<T>::deleteItem(T data) {
+bool VectorStack<T>::remove(T data) {
     typename vector<T>::iterator it;
     it = elements.begin();
     T temp;
@@ -35,12 +35,12 @@ bool VectorStack<T>::deleteItem(T data) {
 }
 
 template <class T>
-T VectorStack<T>::getItem(unsigned int index) {
+T VectorStack<T>::at(unsigned int index) {
     return elements.at(index);
 }
 
 template <class T>
-T VectorStack<T>::popItem() {
+T VectorStack<T>::pop() {
     unsigned int lastIndex = elements.size() - 1;
     T temp = elements.at(lastIndex);
     elements.pop_back();

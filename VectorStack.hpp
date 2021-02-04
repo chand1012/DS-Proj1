@@ -7,12 +7,12 @@ class VectorStack{
     public:
         VectorStack() {};
         ~VectorStack(){};
-        unsigned int length();
-        void appendItem(T);
-        void insertItem(T);
-        bool deleteItem(T);
-        T getItem(unsigned int);
-        T popItem();
+        unsigned int size();
+        void push(T);
+        void insert(T);
+        bool remove(T);
+        T at(unsigned int);
+        T pop();
     private:
         vector<T> elements;
         

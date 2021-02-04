@@ -56,6 +56,8 @@ void LinkedList<T>::appendNode(T data) {
     node_count++;
 }
 
+// works in testing
+// breaks in prod
 template <class T>
 T LinkedList<T>::getNode(unsigned int index) {
     
