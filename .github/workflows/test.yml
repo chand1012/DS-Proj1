@@ -13,6 +13,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run Tests
       run: |
+        echo "CPU INFO"
+        cat /proc/cpuinfo
+        echo "RUNNGING AND BUILDING TESTS"
         mkdir build
         cd build
         cmake ..
