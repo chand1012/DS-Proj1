@@ -18,8 +18,10 @@ add_custom_target(run $<TARGET_FILE:main>)
 
 add_executable(listtest LinkedListTests.cpp)
 add_executable(arrstacktest ArrayStackTests.cpp)
+add_executable(vectstacktest VectorStackTests.cpp)
 
 add_custom_target(runtest 
     COMMAND $<TARGET_FILE:listtest>
     COMMAND $<TARGET_FILE:arrstacktest>
+    COMMAND $<TARGET_FILE:vectstacktest>
 )
